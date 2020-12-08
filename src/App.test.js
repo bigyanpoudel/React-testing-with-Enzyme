@@ -46,3 +46,22 @@ test('check click display button',()=>{
   const increment = findTestByAttr(wrapper,'component-app-increment');
   expect(increment.text()).toContain(counter + 1);
 })
+test('render decrement button',()=>{
+  const wrapper = setup();
+  const decrementButton = findTestByAttr(wrapper,'component-app-button-dec');
+  expect(decrementButton.length).toBe(1);
+});
+test('check click decrement button',()=>
+{
+  const counter = 0;
+  const wrapper = setup(null,{counter});
+  const decrementButton = findTestByAttr(wrapper,'component-app-button-dec'); 
+  decrementButton.simulate('click');
+  const increment = findTestByAttr(wrapper,'component-app-increment');
+  expect(increment.text()).toContain(counter-1 < 0 ? 'counter must be positive ' : counter-1);
+  const wrapper1 = setup(null,{counter});
+  const button = findTestByAttr(wrapper1,'component-app-button');
+  button.simulate('click');
+  const incrementSecond = findTestByAttr(wrapper1,'component-app-increment');
+  expect(incrementSecond.text()).toContain(counter + 1);
+})
