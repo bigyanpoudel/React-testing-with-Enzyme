@@ -1,9 +1,7 @@
 import React from 'React';
 import App from './App';
-import Enzyme,{shallow} from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import {shallow} from 'enzyme';
 
-Enzyme.configure({ adapter: new EnzymeAdapter});
 /** 
 * Function to create shallowWrapper for App component
 *@function setup
